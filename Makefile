@@ -81,6 +81,7 @@ ELC_SRCS := \
 	cpp_template.c \
 	cr.c \
 	cs.c \
+	d.c \
 	el.c \
 	forth.c \
 	fs.c \
@@ -322,6 +323,12 @@ include target.mk
 $(OUT.eir.cpp_template.out): tools/runcpp_template.sh
 endif
 
+TARGET := d
+RUNNER := tools/rund.sh
+CAN_BUILD := $(if $(or $(shell which rdmd),$(shell which gdc),$(shell which ldc2)),1,0)
+include target.mk
+$(OUT.eir.d.out): tools/rund.sh
+
 ifeq ($(uname),Linux)
 TARGET := $(ARCH)
 RUNNER :=
@@ -423,5 +430,3 @@ include target.mk
 test: $(TEST_RESULTS)
 
 .SUFFIXES:
-
--include */*.d
