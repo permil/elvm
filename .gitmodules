@@ -7,3 +7,6 @@
 [submodule "tinycc"]
 	path = tinycc
 	url = http://repo.or.cz/tinycc.git
+[submodule "hexagony"]
+	path = hexagony
+	url = https://github.com/m-ender/hexagony.git

@@ -85,6 +85,7 @@ ELC_SRCS := \
 	forth.c \
 	fs.c \
 	go.c \
+	hxg.c \
 	i.c \
 	java.c \
 	js.c \
@@ -377,6 +378,15 @@ TEST_FILTER := out/eli.c.eir.unl out/dump_ir.c.eir.unl
 endif
 include target.mk
 $(OUT.eir.unl.out): tools/rununl.sh
+
+TARGET := hxg
+RUNNER := tools/runhxg.sh
+TOOL := ruby
+ifndef FULL
+TEST_FILTER := out/eli.c.eir.hxg out/dump_ir.c.eir.hxg
+endif
+include target.mk
+$(OUT.eir.hxg.out): tools/runhxg.sh
 
 TARGET := tm
 RUNNER := out/tm
